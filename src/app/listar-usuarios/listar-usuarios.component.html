@@ -1,0 +1,67 @@
+<p>Listar Usuarios</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Perfil</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios$ | async">
+      <td>{{ usuario.id }}</td>
+      <td>{{ usuario.nome }}</td>
+      <td>{{ usuario.idade }}</td>
+      <td>{{ usuario.perfil }}</td>
+      <td>
+        <button class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                type="button"
+                (click)="editar(usuario.id)">Editar
+        </button>
+        &nbsp;
+        <button class="btn btn-primary " (click)="excluir(usuario.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="(usuario$ | async) as usuario">
+        <form id="myForm" #f="ngForm" >
+          <div class="col-6 form-group">
+            <label for="nome">Id</label>
+            <input type="number" [(ngModel)]="usuario.id" [ngModelOptions]="{standalone: true}" class="form-control" id="id" placeholder="id">
+          </div>
+          <div class="col-6 form-group">
+            <label for="nome">Nome</label>
+            <input type="text" [(ngModel)]="usuario.nome" [ngModelOptions]="{standalone: true}" class="form-control" id="nome" placeholder="Nome">
+          </div>
+          <div class="col-6 form-group">
+            <label for="idade">Idade</label>
+            <input type="number" [(ngModel)]="usuario.idade" [ngModelOptions]="{standalone: true}" class="form-control" id="idade" placeholder="Idade">
+          </div>
+          <div class="col-6 form-group">
+            <label for="perfil">Perfil</label>
+            <input type="text" [(ngModel)]="usuario.perfil" [ngModelOptions]="{standalone: true}" class="form-control" id="perfil" placeholder="Perfil">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

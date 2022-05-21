@@ -1,0 +1,23 @@
+<p>Cadastro</p>
+
+<form id="myForm" #f="ngForm" (ngSubmit)="addUsuario()">
+  <div class="col-6 form-group">
+    <label for="nome">Id</label>
+    <input type="number" [(ngModel)]="model.id" [ngModelOptions]="{standalone: true}" class="form-control" id="id" placeholder="id">
+  </div>
+  <div class="col-6 form-group">
+    <label for="nome">Nome</label>
+    <input type="text" [(ngModel)]="model.nome" [ngModelOptions]="{standalone: true}" class="form-control" id="nome" placeholder="Nome">
+  </div>
+  <div class="col-6 form-group">
+    <label for="idade">Idade</label>
+    <input type="number" [(ngModel)]="model.idade" [ngModelOptions]="{standalone: true}" class="form-control" id="idade" placeholder="Idade">
+  </div>
+  <div class="col-6 form-group">
+    <label for="perfil">Perfil</label>
+    <input type="text" [(ngModel)]="model.perfil" [ngModelOptions]="{standalone: true}" class="form-control" id="perfil" placeholder="Perfil">
+  </div>
+  <div class="col-6 mt-3">
+    <button type="submit" class="btn btn-primary btn-block" >Salvar</button>
+  </div>
+</form>
